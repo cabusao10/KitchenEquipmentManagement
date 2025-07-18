@@ -1,0 +1,67 @@
+﻿<Page x:Class="KitchenEquipmentManagement.WPF.Views.LoginPage"
+    
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:KitchenEquipmentManagement.WPF.Views"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      xmlns:mi="http://metro.mahapps.com/winfx/xaml/controls"
+      mc:Ignorable="d" 
+      Background="#352F44"
+      
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Login">
+
+    <Grid>
+        <StackPanel Width="300" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel.Resources>
+                <Style TargetType="TextBox">
+                    <Setter Property="Margin" Value="5"></Setter>
+                </Style>
+                <Style TargetType="PasswordBox">
+                    <Setter Property="Margin" Value="5"></Setter>
+                </Style>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="5"></Setter>
+                </Style>
+               
+            </StackPanel.Resources>
+            <TextBlock Foreground="#FAF0E6" FontWeight="Black">LOGIN</TextBlock>
+            <TextBlock Foreground="#FAF0E6">Username</TextBlock>
+            <ui:TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged,  Mode=TwoWay}" PlaceholderEnabled="True" PlaceholderText="Username"/>
+
+            <TextBlock Foreground="#FAF0E6" Margin="0 20 0 0" >Password</TextBlock>
+            <ui:PasswordBox x:Name="PasswordBox" PasswordChanged="PasswordBox_PasswordChanged" PlaceholderEnabled="True" PlaceholderText="Password"/>
+            <Grid Margin="0 20 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <ui:Button
+                    HorizontalAlignment="Left"
+                    Grid.Column="0"
+                    Width="100"
+Appearance="Primary"
+ Content="Login"
+                Command="{Binding LoginCommand}"
+/>
+                <ui:Button
+                    HorizontalAlignment="Right"
+                    Grid.Column="1"
+                    Width="100"
+Appearance="Dark"
+ Content="Register"
+                Command="{Binding RegisterCommand}"
+/>
+            </Grid>
+        </StackPanel>
+     
+       
+        
+       
+    </Grid>
+</Page>
