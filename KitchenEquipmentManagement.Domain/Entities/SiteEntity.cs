@@ -2,22 +2,21 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.ComponentModel.DataAnnotations;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
 
-    public class EquipmentEntity
+    public class SiteEntity
     {
         [Key]
-        public int EquipmentId { get; set; }
+        public int SiteId { get; set; }
 
-        public string SerialNumber { get; set; }
         public string Description { get; set; }
-        public string Condition { get; set; } // "Working" / "Not Working"
+        public bool Active { get; set; }
 
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
         [ForeignKey("UserId")]
         public virtual UserEntity User { get; set; }
 

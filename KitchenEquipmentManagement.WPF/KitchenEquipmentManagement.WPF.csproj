@@ -178,6 +178,7 @@
     </ApplicationDefinition>
     <Compile Include="Helper\IMainNavigate.cs" />
     <Compile Include="Helper\MainNavigate.cs" />
+    <Compile Include="Helper\SiteStatusConverter.cs" />
     <Compile Include="Helper\UserTypeConverter.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -198,6 +199,9 @@
     <Compile Include="Views\AddModal.xaml.cs">
       <DependentUpon>AddModal.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Equipments.xaml.cs">
+      <DependentUpon>Equipments.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -215,6 +219,9 @@
     <Compile Include="Helper\INavigateService.cs" />
     <Compile Include="Helper\NavigateService.cs" />
     <Compile Include="Helper\RelayCommand.cs" />
+    <Compile Include="Views\SiteEquipmentPage.xaml.cs">
+      <DependentUpon>SiteEquipmentPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SitePage.xaml.cs">
       <DependentUpon>SitePage.xaml</DependentUpon>
     </Compile>
@@ -237,6 +244,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Equipments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\LoginPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -248,6 +259,10 @@
     <Page Include="Views\RegisterPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SiteEquipmentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SitePage.xaml">
       <SubType>Designer</SubType>

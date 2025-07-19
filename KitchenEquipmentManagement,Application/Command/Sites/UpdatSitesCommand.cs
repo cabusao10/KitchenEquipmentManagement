@@ -39,6 +39,16 @@ namespace KitchenEquipmentManagement.ApplicationLayer.Command.Sites
                 }
 
 
+                if (ApplicationDbContext.Sites.Any(x => x.Description == request.Site.Description))
+                {
+                    return new BaseResult
+                    {
+                        IsSuccess = false,
+                        Message = "There is an existing site with that descriptions"
+                    };
+                }
+
+
                 var site = ApplicationDbContext.Sites.FirstOrDefault(x => x.SiteId == request.Site.SiteId);
 
                 site.Description = request.Site.Description;

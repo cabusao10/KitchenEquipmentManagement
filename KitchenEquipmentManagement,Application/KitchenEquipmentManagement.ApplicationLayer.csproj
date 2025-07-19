@@ -138,6 +138,7 @@
   <ItemGroup>
     <Compile Include="BaseService.cs" />
     <Compile Include="Command\Registration\RegisterCommand.cs" />
+    <Compile Include="Command\Sites\DeleteSiteCommand.cs" />
     <Compile Include="Command\Sites\UpdatSitesCommand.cs" />
     <Compile Include="Command\Sites\AddNewSitesCommand.cs" />
     <Compile Include="Command\Users\AddNewSitesCommand.cs" />
