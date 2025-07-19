@@ -23,18 +23,23 @@ namespace KitchenEquipmentManagement.Data.Contexts
             modelBuilder.Entity<SiteEntity>().ToTable("Site");
             modelBuilder.Entity<UserEntity>().ToTable("User");
 
+            modelBuilder.Entity<SiteEntity>()
+        .HasOptional(s => s.User)
+        .WithMany(u => u.Sites)
+        .HasForeignKey(s => s.UserId)
+        .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<RegisteredEquipmentEntity>().ToTable("RegisteredEquipments")
                 .HasRequired(re => re.Equipment)
                 .WithMany()
                 .HasForeignKey(re => re.EquipmentId)
-                .WillCascadeOnDelete(true); 
+                .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<RegisteredEquipmentEntity>()
                 .HasRequired(re => re.Site)
-                .WithMany() 
+                .WithMany()
                 .HasForeignKey(re => re.SiteId)
-                .WillCascadeOnDelete(false); 
+                .WillCascadeOnDelete(false);
         }
     }
 }

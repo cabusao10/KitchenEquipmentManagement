@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows.Controls;
+using KitchenEquipmentManagement.WPF.Views;
 
 namespace KitchenEquipmentManagement.WPF.Helper
 {
@@ -25,6 +26,7 @@ namespace KitchenEquipmentManagement.WPF.Helper
         public void NavigateTo<TPage>() where TPage : Page
         {
             var page = _provider.GetRequiredService<TPage>();
+
             _frame.Navigate(page);
         }
 

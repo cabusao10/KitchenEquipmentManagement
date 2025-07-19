@@ -9,9 +9,11 @@
       Title="AddEditSitePage">
 
     <Grid>
+
         <StackPanel VerticalAlignment="Center" Orientation="Vertical" 
                     HorizontalAlignment="Center"
                     Width="350">
+
             <StackPanel.Resources>
                 <Style TargetType="TextBox">
                     <Setter Property="Margin" Value="0 0 0 10"/>
@@ -21,17 +23,31 @@
                     <Setter Property="Foreground" Value="White"/>
                 </Style>
             </StackPanel.Resources>
+            <Grid>
+                <TextBlock Text="{Binding TitleText}"></TextBlock>
+                <Border CornerRadius="5" BorderThickness="2" BorderBrush="White" Width="100" 
+                 VerticalAlignment="Top"
+              Margin="0 0 0 20"
+                HorizontalAlignment="Right">
+                    <Button Height="30"
+                            Command="{Binding BackToListCommand}"
+                  Foreground="White"
+                Background="Transparent"
+                BorderThickness="0">Back To list</Button>
+                </Border>
+            </Grid>
             <TextBlock>Description</TextBlock>
-            <TextBox/>
+            <TextBox Text="{Binding Descriptions , UpdateSourceTrigger=PropertyChanged,  Mode=TwoWay}"/>
             <TextBlock>Status</TextBlock>
-            <ComboBox>
-                <ComboBoxItem Content="False"/>
-                <ComboBoxItem Content="True"/>
+            <ComboBox SelectedIndex="{Binding SelectedStatus, UpdateSourceTrigger=PropertyChanged,  Mode=TwoWay}">
+                <ComboBoxItem Content="Active"/>
+                <ComboBoxItem Content="Inactive" />
             </ComboBox>
             <Button Content="Save"
                     Height="30"
                     Margin="0 20 0 0"
-                    BorderThickness="0"/>
+                    BorderThickness="0"
+                    Command="{Binding SaveSitesCommand}"/>
         </StackPanel>
     </Grid>
 </Page>

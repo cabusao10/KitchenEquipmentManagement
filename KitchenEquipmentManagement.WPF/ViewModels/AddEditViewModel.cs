@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Input;
 using KitchenEquipmentManagement.ApplicationLayer.Command.Sites;
 using KitchenEquipmentManagement.ApplicationLayer.Command.Users;
+using KitchenEquipmentManagement.ApplicationLayer.Models;
 using KitchenEquipmentManagement.WPF.Helper;
 using KitchenEquipmentManagement.WPF.Views;
 using MediatR;
@@ -19,7 +20,7 @@ namespace KitchenEquipmentManagement.WPF.ViewModels
     public class AddEditViewModel : INotifyPropertyChanged
     {
         private readonly IMediator _mediator;
-        private readonly INavigateService _nav;
+        private readonly IMainNavigateService _nav;
 
         private string _desccription;
         private bool _status;
@@ -46,11 +47,17 @@ namespace KitchenEquipmentManagement.WPF.ViewModels
         /// <summary>
         /// Status of site
         /// </summary>
-        public bool Status
+        private bool Active
         {
-            get { return _status; }
-            set { _status = value; OnPropertyChanged(); }
+            get { return _selectedstatus == 0; }
 
+        }
+
+        private int _selectedstatus = 0;
+        public int SelectedStatus
+        {
+            get { return _selectedstatus; }
+            set { _selectedstatus = value; OnPropertyChanged(); }
         }
 
         /// <summary>
@@ -58,28 +65,44 @@ namespace KitchenEquipmentManagement.WPF.ViewModels
         /// </summary>
         /// <param name="mediator">Mediator Service</param>
         /// <param name="navigator">Navigator service</param>
-        public AddEditViewModel(IMediator mediator, INavigateService navigator)
+        public AddEditViewModel(IMediator mediator, IMainNavigateService navigator)
         {
             _mediator = mediator;
             _nav = navigator;
+            
+
             BackToListCommand = new RelayCommand(async (_) => await BackToList());
             SaveSitesCommand = new RelayCommand(async _ => await SaveSite());
         }
+
+        public string TitleText => SiteId > 0 ? "Update site" : "Add new site";
 
 
         public ICommand BackToListCommand { get; }
         public ICommand SaveSitesCommand { get; }
 
+        public void ViewData(SiteModel data)
+        {
+            SiteId = data.SiteId;
+            SelectedStatus = data.Active ?  0:1;
+            Descriptions = data.Description;
+        }
 
         public async Task BackToList()
         {
+
+            this.Descriptions = string.Empty;
+            this.SelectedStatus = 0;
+            this.SiteId = 0;
             _nav.NavigateTo<SitePage>();
         }
+
+   
 
         public async Task SaveSite()
         {
             // check if new id 
-            if(_siteid > 0)
+            if(_siteid == 0)
             {
 
                 var res = await _mediator.Send(new AddNewSiteCommand
@@ -87,13 +110,17 @@ namespace KitchenEquipmentManagement.WPF.ViewModels
                     Site = new ApplicationLayer.Models.SiteModel
                     {
                         Description = _desccription,
-                        Active = _status,
+                        Active = Active,
                     }
                 });
 
+                this.Descriptions = string.Empty;
+                this.SelectedStatus = 0;
+                this.SiteId = 0;
+
                 if (res.IsSuccess)
                 {
-                    MessageBox.Show("Success savingn new site");
+                    MessageBox.Show("Success saving new site");
                 }
                 else
                 {
@@ -107,14 +134,18 @@ namespace KitchenEquipmentManagement.WPF.ViewModels
                 {
                     Site = new ApplicationLayer.Models.SiteModel
                     {
+                        SiteId = SiteId,
                         Description = _desccription,
-                        Active = _status,
+                        Active = Active,
                     }
                 });
 
+
+              
+
                 if (res.IsSuccess)
                 {
-                    MessageBox.Show("Success savingn new site");
+                    MessageBox.Show("Success updating site data");
                 }
                 else
                 {
