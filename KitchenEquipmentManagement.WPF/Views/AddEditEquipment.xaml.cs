@@ -12,17 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using KitchenEquipmentManagement.WPF.ViewModels;
 
 namespace KitchenEquipmentManagement.WPF.Views
 {
     /// <summary>
-    /// Interaction logic for Equipments.xaml
+    /// Interaction logic for AddEditEquipment.xaml
     /// </summary>
-    public partial class Equipments : Page
+    public partial class AddEditEquipment : Page
     {
-        public Equipments()
+        public AddEditEquipment(AddEditEquipmentViewModel viewmodel)
         {
             InitializeComponent();
+            DataContext = viewmodel;
         }
     }
 }

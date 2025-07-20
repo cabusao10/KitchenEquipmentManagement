@@ -39,7 +39,7 @@ namespace KitchenEquipmentManagement.ApplicationLayer.Command.Sites
                 }
 
 
-                if (ApplicationDbContext.Sites.Any(x => x.Description == request.Site.Description))
+                if (ApplicationDbContext.Sites.Any(x => x.Description == request.Site.Description && x.SiteId != request.Site.SiteId))
                 {
                     return new BaseResult
                     {

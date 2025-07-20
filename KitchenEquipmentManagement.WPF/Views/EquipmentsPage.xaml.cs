@@ -12,19 +12,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using KitchenEquipmentManagement.ApplicationLayer.Models;
 using KitchenEquipmentManagement.WPF.ViewModels;
 
 namespace KitchenEquipmentManagement.WPF.Views
 {
     /// <summary>
-    /// Interaction logic for SiteEquipmentPage.xaml
+    /// Interaction logic for Equipments.xaml
     /// </summary>
-    public partial class SiteEquipmentPage : Page
+    public partial class EquipmentsPage : Page
     {
-        public SiteEquipmentPage(SiteEquipmentViewModel viewModel)
+        private readonly EquipmentViewModel _viewmodel;
+        public EquipmentsPage(EquipmentViewModel viewmodel)
         {
             InitializeComponent();
-            DataContext = viewModel;
+            _viewmodel = viewmodel;
+            DataContext = viewmodel;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            ((EquipmentViewModel)DataContext).GetEquipments();
         }
     }
 }

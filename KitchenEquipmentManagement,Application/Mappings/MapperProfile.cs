@@ -16,6 +16,7 @@ namespace KitchenEquipmentManagement.ApplicationLayer.Mappings
             CreateMap<UserEntity, UserModel>().ReverseMap() ;
             CreateMap<SiteEntity, SiteModel>().ReverseMap() ;
             CreateMap<EquipmentEntity, EquipmentModel>().ReverseMap() ;
+            CreateMap<AssignSiteEquipmentModel, EquipmentEntity>().ReverseMap();
             CreateMap<RegisteredEquipmentModel, RegisteredEquipmentEntity>().ReverseMap();
         }
     }

@@ -8,6 +8,8 @@ namespace KitchenEquipmentManagement.Data.Contexts
     {
         public AppDbContext() : base("name=DefaultConnection") // or your connection string name
         {
+            this.Configuration.LazyLoadingEnabled = true;      // Optional (default is true)
+            this.Configuration.ProxyCreationEnabled = true;    // Required for lazy loading
         }
 
         public DbSet<UserEntity> Users { get; set; }

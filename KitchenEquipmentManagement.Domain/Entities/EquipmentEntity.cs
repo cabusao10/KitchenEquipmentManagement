@@ -8,6 +8,11 @@
     using System.Text;
     using System.Threading.Tasks;
 
+    public enum EnumEquipmentCondition
+    {
+        Working,
+        Not_Working
+    }
     public class EquipmentEntity
     {
         [Key]
@@ -21,7 +26,6 @@
         [ForeignKey("UserId")]
         public virtual UserEntity User { get; set; }
 
-        public virtual ICollection<RegisteredEquipmentEntity> RegisteredEquipments { get; set; }
 
         public DateTime? DateCreated { get; set; }
         public DateTime? DateModifed { get; set; }

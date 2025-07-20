@@ -51,21 +51,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\202507150619153_initial.cs" />
-    <Compile Include="Migrations\202507150619153_initial.Designer.cs">
-      <DependentUpon>202507150619153_initial.cs</DependentUpon>
+    <Compile Include="Migrations\202507201042034_initial.cs" />
+    <Compile Include="Migrations\202507201042034_initial.Designer.cs">
+      <DependentUpon>202507201042034_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202507150623364_removeentityname.cs" />
-    <Compile Include="Migrations\202507150623364_removeentityname.Designer.cs">
-      <DependentUpon>202507150623364_removeentityname.cs</DependentUpon>
+    <Compile Include="Migrations\202507201119349_removeFK.cs" />
+    <Compile Include="Migrations\202507201119349_removeFK.Designer.cs">
+      <DependentUpon>202507201119349_removeFK.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202507180907585_AddDates.cs" />
-    <Compile Include="Migrations\202507180907585_AddDates.Designer.cs">
-      <DependentUpon>202507180907585_AddDates.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202507181121186_parentid_nullable.cs" />
-    <Compile Include="Migrations\202507181121186_parentid_nullable.Designer.cs">
-      <DependentUpon>202507181121186_parentid_nullable.cs</DependentUpon>
+    <Compile Include="Migrations\202507201121180_remove_registered.cs" />
+    <Compile Include="Migrations\202507201121180_remove_registered.Designer.cs">
+      <DependentUpon>202507201121180_remove_registered.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,17 +82,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202507150619153_initial.resx">
-      <DependentUpon>202507150619153_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202507201042034_initial.resx">
+      <DependentUpon>202507201042034_initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202507150623364_removeentityname.resx">
-      <DependentUpon>202507150623364_removeentityname.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202507201119349_removeFK.resx">
+      <DependentUpon>202507201119349_removeFK.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202507180907585_AddDates.resx">
-      <DependentUpon>202507180907585_AddDates.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202507181121186_parentid_nullable.resx">
-      <DependentUpon>202507181121186_parentid_nullable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202507201121180_remove_registered.resx">
+      <DependentUpon>202507201121180_remove_registered.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

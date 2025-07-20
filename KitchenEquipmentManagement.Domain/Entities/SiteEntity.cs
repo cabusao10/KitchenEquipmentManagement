@@ -20,8 +20,6 @@
         [ForeignKey("UserId")]
         public virtual UserEntity User { get; set; }
 
-        public virtual ICollection<RegisteredEquipmentEntity> RegisteredEquipments { get; set; }
-
         public DateTime? DateCreated { get; set; }
         public DateTime? DateModifed { get; set; }
         public DateTime? DateDeleted { get; set; }

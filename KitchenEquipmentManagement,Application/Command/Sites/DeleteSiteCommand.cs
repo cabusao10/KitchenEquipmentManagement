@@ -31,6 +31,16 @@ namespace KitchenEquipmentManagement.ApplicationLayer.Command.Sites
                         };
                     }
 
+                    var registered = ApplicationDbContext.RegisteredEquipments.Where(x => x.SiteId == site.SiteId).ToArray();
+                    if (registered.Any())
+                    {
+                        for(int x = 0; x < registered.Length; x++)
+                        {
+                            registered[x].Equipment.UserId = null;
+                        }
+                        ApplicationDbContext.RegisteredEquipments.RemoveRange(registered);
+                    }
+
                     ApplicationDbContext.Sites.Remove(site);
                     await ApplicationDbContext.SaveChangesAsync();
 

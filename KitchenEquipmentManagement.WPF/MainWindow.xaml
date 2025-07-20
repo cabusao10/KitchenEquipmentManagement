@@ -7,6 +7,7 @@
           xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         mc:Ignorable="d"
         Background="#352F44"
+        WindowState="Maximized"
         Foreground="#FAF0E6"
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="#352F44">

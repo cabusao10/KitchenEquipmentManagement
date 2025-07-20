@@ -23,10 +23,12 @@ namespace KitchenEquipmentManagement.WPF.Views
     public partial class SitePage : Page
     {
 
-        public SitePage(SiteViewModel viewmodel , INavigateService navigate)
+        private readonly AssignSiteEquipment _assignSiteEquipment;
+        public SitePage(SiteViewModel viewmodel , INavigateService navigate, AssignSiteEquipment assignSite )
         {
             InitializeComponent();
             DataContext = viewmodel;
+            this._assignSiteEquipment = assignSite;
         }
 
         public async Task ReloadData()
@@ -38,6 +40,11 @@ namespace KitchenEquipmentManagement.WPF.Views
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             ReloadData();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            _assignSiteEquipment.ShowDialog();
         }
     }
 }

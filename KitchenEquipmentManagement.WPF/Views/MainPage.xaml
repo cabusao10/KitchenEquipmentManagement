@@ -64,7 +64,7 @@
                     </Button.Resources>
                 </Button>
                 <Button Content="Sites" Command="{Binding ViewSitesCommand}"/>
-                <Button Content="Equipments"/>
+                <Button Content="Equipments" Command="{Binding ViewEquipmentCommand}"/>
             </StackPanel>
             <Button Content="Logout" 
                     Command="{Binding LogoutCommannd}"

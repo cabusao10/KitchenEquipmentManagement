@@ -30,6 +30,18 @@ namespace KitchenEquipmentManagement.WPF.Extensions
             services.AddSingleton<AddEditSitePage>();
             services.AddSingleton<AddEditViewModel>();
 
+            services.AddSingleton<AddEditEquipment>();
+            services.AddSingleton<AddEditEquipmentViewModel>();
+
+            services.AddSingleton<EquipmentsPage>();
+            services.AddSingleton<EquipmentViewModel>();
+
+            services.AddSingleton<SiteEquipmentPage>();
+            services.AddSingleton<SiteEquipmentViewModel>();
+            services.AddSingleton<AssignSiteEquipment>();
+            services.AddSingleton<AssignSiteEquipmentViewModel>();
+
+
             return services;
 
         }

@@ -18,9 +18,12 @@ namespace KitchenEquipmentManagement.ApplicationLayer.Models
         public string Description { get; set; }
         public string Condition { get; set; } // "Working" / "Not Working"
 
-        public int UserId { get; set; }
+        public int? SiteId { get; set; }
+        public string SiteDescription { get; set; }
+
+        public int? UserId { get; set; }
         public virtual UserModel User { get; set; }
 
-        public virtual ICollection<RegisteredEquipmentModel> RegisteredEquipments { get; set; }
+        public virtual RegisteredEquipmentModel RegisteredEquipments { get; set; }
     }
 }

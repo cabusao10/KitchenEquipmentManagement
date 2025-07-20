@@ -178,6 +178,7 @@
     </ApplicationDefinition>
     <Compile Include="Helper\IMainNavigate.cs" />
     <Compile Include="Helper\MainNavigate.cs" />
+    <Compile Include="Helper\ManageConverter.cs" />
     <Compile Include="Helper\SiteStatusConverter.cs" />
     <Compile Include="Helper\UserTypeConverter.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -186,21 +187,31 @@
     <Compile Include="TEST.xaml.cs">
       <DependentUpon>TEST.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AddEditEquipmentViewModel.cs" />
     <Compile Include="ViewModels\AddEditViewModel.cs" />
     <Compile Include="ViewModels\AddModalViewModel.cs" />
+    <Compile Include="ViewModels\AssignSiteEquipmentViewModel.cs" />
+    <Compile Include="ViewModels\EquipmentViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\SiteEquipmentViewModel.cs" />
     <Compile Include="ViewModels\SiteViewModel.cs" />
     <Compile Include="ViewModels\UserListViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
+    <Compile Include="Views\AddEditEquipment.xaml.cs">
+      <DependentUpon>AddEditEquipment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddEditSitePage.xaml.cs">
       <DependentUpon>AddEditSitePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AddModal.xaml.cs">
       <DependentUpon>AddModal.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Equipments.xaml.cs">
-      <DependentUpon>Equipments.xaml</DependentUpon>
+    <Compile Include="Views\AssignSiteEquipment.xaml.cs">
+      <DependentUpon>AssignSiteEquipment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EquipmentsPage.xaml.cs">
+      <DependentUpon>EquipmentsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -236,6 +247,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\AddEditEquipment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AddEditSitePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -244,7 +259,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Equipments.xaml">
+    <Page Include="Views\AssignSiteEquipment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EquipmentsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

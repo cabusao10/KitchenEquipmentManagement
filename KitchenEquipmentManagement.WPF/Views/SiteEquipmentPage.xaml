@@ -5,23 +5,101 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:KitchenEquipmentManagement.WPF.Views"
       mc:Ignorable="d" 
+      xmlns:helper="clr-namespace:KitchenEquipmentManagement.WPF.Helper"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SiteEquipmentPage">
 
     <Grid>
+        <Grid.Resources>
+            <helper:ManageConverter x:Key="manageconverter"/>
+        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
             <RowDefinition/>
             
         </Grid.RowDefinitions>
         <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
             <TextBlock Foreground="White" FontWeight="DemiBold" FontSize="32">Site Equipment</TextBlock>
-            <Button Content="Add equipment" Width="120" Height="40" HorizontalAlignment="Right" BorderThickness="0"
-                        Command="{Binding AddNewSiteCommand}"
-                        Margin="0 0 10 0">
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="130"/>
+                </Grid.ColumnDefinitions>
+                <Button Content="Add equipment" Width="120" Height="40" HorizontalAlignment="Right" BorderThickness="0"
+              Command="{Binding AssignEquipmentCommand}"
+              Margin="0 0 10 0">
 
-            </Button>
+                </Button>
+
+                <Button Grid.Column="1" Content="Back to list" Width="120" Height="40" HorizontalAlignment="Right" BorderThickness="0"
+  Command="{Binding BackToListCommand}"
+  Margin="0 0 10 0">
+
+                </Button>
+            </Grid>
         </Grid>
-        
+        <Grid Grid.Row="1">
+            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Equipments,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Serial Number" Binding="{Binding SerialNumber}"/>
+                    <DataGridTextColumn Header="Description" Binding="{Binding Description}"/>
+                    <DataGridTextColumn Header="Used By" Binding="{Binding User.FirstName}"/>
+                    <DataGridTemplateColumn Header="">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Remove"
+                                Margin="5"
+                                Command="{Binding DataContext.DeleteEquipmentCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                CommandParameter="{Binding EquipmentId}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Button Content="Use it"
+    Margin="5"
+    Command="{Binding DataContext.UseEquipmentCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+    CommandParameter="{Binding EquipmentId}" >
+                                        <Button.Style>
+                                            <Style TargetType="Button">
+                                                <Style.Triggers >
+                                                    <DataTrigger Binding="{Binding User.UserId}" Value="0">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                    <Button Content="Stop Using"
+Margin="5"
+Command="{Binding DataContext.UnUseEquipmentCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+CommandParameter="{Binding EquipmentId}" >
+                                        <Button.Style>
+                                            <Style TargetType="Button">
+                                                <Style.Triggers >
+                                                    <DataTrigger Binding="{Binding User.UserId}" Value="0">
+                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
     </Grid>
 </Page>

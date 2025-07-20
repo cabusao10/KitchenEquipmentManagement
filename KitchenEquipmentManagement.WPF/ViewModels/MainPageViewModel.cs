@@ -21,6 +21,7 @@ namespace KitchenEquipmentManagement.WPF.ViewModels
         private readonly IMediator _mediator;
         private readonly ICurrentUserService _currentUser;
         private readonly UserListViewModel userListViewModel;
+        private readonly EquipmentViewModel _equipmentview;
         private readonly SiteViewModel _siteView;
         private readonly INavigateService _windowNavigate;
 
@@ -35,18 +36,21 @@ namespace KitchenEquipmentManagement.WPF.ViewModels
         public MainPageViewModel(IMediator mediator, IMainNavigateService navigator,
             ICurrentUserService currentUserService, UserListViewModel userListViewModel
             , SiteViewModel siteViewModel
+            ,EquipmentViewModel equipmentview
             , INavigateService navigateService)
         {
             _currentUser = currentUserService;
             _mediator = mediator;
             _nav = navigator;
+            _equipmentview = equipmentview;
 
             CanViewUsers = _currentUser.GetUserRole() == Domain.Entities.EnumUserType.SuperAdmin;
 
             ViewUsersCommand = new RelayCommand(async (_) => await ViewUsers());
             ViewSitesCommand = new RelayCommand(async (_) => await ViewSites());
             LogoutCommannd = new RelayCommand(async (_) => await Logout());
-
+            ViewEquipmentCommand = new RelayCommand(async (_) => await ViewEquipments());
+            
             this.userListViewModel = userListViewModel;
             this._siteView = siteViewModel;
             this._windowNavigate = navigateService;
@@ -58,9 +62,15 @@ namespace KitchenEquipmentManagement.WPF.ViewModels
 
         }
         public ICommand ViewUsersCommand { get; }
+        public ICommand ViewEquipmentCommand { get; }
         public ICommand ViewSitesCommand { get; }
         public ICommand LogoutCommannd { get; }
 
+        private async Task ViewEquipments()
+        {
+            await _equipmentview.GetEquipments();
+            _nav.NavigateTo<EquipmentsPage>();
+        }
 
         private async Task ViewSites()
         {

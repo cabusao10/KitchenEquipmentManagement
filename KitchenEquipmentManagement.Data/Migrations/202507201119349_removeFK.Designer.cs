@@ -7,13 +7,13 @@ namespace KitchenEquipmentManagement.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class initial : IMigrationMetadata
+    public sealed partial class removeFK : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(removeFK));
         
         string IMigrationMetadata.Id
         {
-            get { return "202507150619153_initial"; }
+            get { return "202507201119349_removeFK"; }
         }
         
         string IMigrationMetadata.Source

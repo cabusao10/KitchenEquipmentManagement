@@ -18,6 +18,7 @@
         public virtual EquipmentEntity Equipment { get; set; }
 
         public int SiteId { get; set; }
+
         [ForeignKey("SiteId")]
         public virtual SiteEntity Site { get; set; }
         public DateTime? DateCreated { get; set; }

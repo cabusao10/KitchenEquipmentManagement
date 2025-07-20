@@ -7,13 +7,13 @@ namespace KitchenEquipmentManagement.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class parentid_nullable : IMigrationMetadata
+    public sealed partial class remove_registered : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(parentid_nullable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(remove_registered));
         
         string IMigrationMetadata.Id
         {
-            get { return "202507181121186_parentid_nullable"; }
+            get { return "202507201121180_remove_registered"; }
         }
         
         string IMigrationMetadata.Source

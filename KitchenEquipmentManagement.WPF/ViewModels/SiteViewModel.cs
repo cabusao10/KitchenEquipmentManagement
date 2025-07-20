@@ -29,24 +29,35 @@ namespace KitchenEquipmentManagement.WPF.ViewModels
         private readonly IMediator _mediator;
         private readonly ICurrentUserService _currentUser;
         private readonly AddEditViewModel _addeditmodel;
-        public ObservableCollection<SiteModel> Sites { get; set;  }
+        private readonly SiteEquipmentViewModel _siteEquipmentViewModel;
+        public ObservableCollection<SiteModel> Sites { get; set; }
 
         public ICommand AddNewSiteCommand { get; }
         public ICommand DeleteSitesCommand { get; }
         public ICommand EditSiteCommand { get; }
+        public ICommand ManageEquipmentCommand { get; }
 
         public SiteViewModel(IMediator mediator, AddEditViewModel viewmodel
-            , IMainNavigateService navigator, ICurrentUserService currentUserService)
+            , IMainNavigateService navigator, ICurrentUserService currentUserService, SiteEquipmentViewModel siteEquipmentViewModel)
         {
             _currentUser = currentUserService;
             _mediator = mediator;
 
             _nav = navigator;
             _addeditmodel = viewmodel;
+            _siteEquipmentViewModel = siteEquipmentViewModel;
 
             AddNewSiteCommand = new RelayCommand(async _ => await AddNewSite());
             DeleteSitesCommand = new RelayCommand(async (siteId) => await DeleteSite(siteId));
             EditSiteCommand = new RelayCommand(async (siteId) => await EditSite(siteId));
+            ManageEquipmentCommand = new RelayCommand(async (siteId) => await ManageEquipment(siteId));
+        }
+
+        public int CurrentUser { get { return _currentUser.GetCurrentUser().UserId; } }
+        public async Task ManageEquipment(object siteId)
+        {
+            await _siteEquipmentViewModel.GetSiteEquipments((int)siteId);
+            _nav.NavigateTo<SiteEquipmentPage>();
         }
 
         public async Task EditSite(object siteId)
@@ -56,7 +67,7 @@ namespace KitchenEquipmentManagement.WPF.ViewModels
             {
                 _addeditmodel.ViewData(site);
                 _nav.NavigateTo<AddEditSitePage>();
-                   
+
             }
         }
         public async Task DeleteSite(object siteId)

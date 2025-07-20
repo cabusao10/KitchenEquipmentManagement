@@ -74,8 +74,10 @@ namespace KitchenEquipmentManagement.WPF.ViewModels
             BackToListCommand = new RelayCommand(async (_) => await BackToList());
             SaveSitesCommand = new RelayCommand(async _ => await SaveSite());
         }
-
-        public string TitleText => SiteId > 0 ? "Update site" : "Add new site";
+        private string _title= "Add new site";
+        public string TitleText{
+            get { return _title; } set { _title = value; OnPropertyChanged(); }
+        }
 
 
         public ICommand BackToListCommand { get; }
@@ -83,17 +85,23 @@ namespace KitchenEquipmentManagement.WPF.ViewModels
 
         public void ViewData(SiteModel data)
         {
+           
             SiteId = data.SiteId;
             SelectedStatus = data.Active ?  0:1;
             Descriptions = data.Description;
+
+            TitleText = SiteId > 0 ? "Update site" : "Add new site";
+
         }
 
         public async Task BackToList()
         {
-
             this.Descriptions = string.Empty;
             this.SelectedStatus = 0;
             this.SiteId = 0;
+
+            TitleText = SiteId > 0 ? "Update site" : "Add new site";
+
             _nav.NavigateTo<SitePage>();
         }
 

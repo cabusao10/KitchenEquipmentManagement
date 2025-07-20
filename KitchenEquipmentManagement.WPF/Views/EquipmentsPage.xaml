@@ -1,0 +1,61 @@
+﻿<Page x:Class="KitchenEquipmentManagement.WPF.Views.EquipmentsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:KitchenEquipmentManagement.WPF.Views"
+      mc:Ignorable="d" 
+      Loaded="Page_Loaded"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Equipments">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <TextBlock Foreground="White" FontWeight="DemiBold" FontSize="32">Equipments</TextBlock>
+            <Button Content="Add new equipment" Width="120" Height="40" HorizontalAlignment="Right" BorderThickness="0"
+         Command="{Binding AddNewEquipmentCommand}"
+         Margin="0 0 10 0">
+
+            </Button>
+        </Grid>
+        <Grid Grid.Row="1">
+            <DataGrid AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      ItemsSource="{Binding Equipments}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Serial Number"  Binding="{Binding SerialNumber}"/>
+                    <DataGridTextColumn Header="Description" Binding="{Binding Description}"/>
+                    <DataGridTextColumn Header="Condition" Binding="{Binding Condition}"/>
+                    <DataGridTextColumn Header="Site Assigned" Binding="{Binding SiteDescription}"/>
+                    <DataGridTextColumn Header="Used by" Binding="{Binding User.FirstName}"/>
+                    <DataGridTemplateColumn Header="">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Edit"
+                            IsEnabled="True"
+                            Margin="5"
+                            Command="{Binding DataContext.EditEquipmentCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                        CommandParameter="{Binding EquipmentId}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Delete"
+                     IsEnabled="True"
+                     Margin="5"
+                    Command="{Binding DataContext.DeleteEquipmentCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                    CommandParameter="{Binding EquipmentId}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</Page>
